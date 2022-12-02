@@ -259,7 +259,7 @@ class Ui_MainWindow(object):
         self.restartButton.setFont(font)
         self.restartButton.setObjectName("restartButton")
         self.winLabel = QtWidgets.QLabel(self.centralwidget)
-        self.winLabel.setGeometry(QtCore.QRect(80, 140, 75, 255))
+        self.winLabel.setGeometry(QtCore.QRect(40, 205, 420, 100))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 255, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -281,7 +281,7 @@ class Ui_MainWindow(object):
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Shadow, brush)
         self.winLabel.setPalette(palette)
         font = QtGui.QFont()
-        font.setPointSize(18)
+        font.setPointSize(30)
         self.winLabel.setFont(font)
         self.winLabel.setFrameShape(QtWidgets.QFrame.Box)
         self.winLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -341,14 +341,7 @@ class Ui_MainWindow(object):
 " in a one box radius\n"
 " of the selected box"))
         self.restartButton.setText(_translate("MainWindow", "Play Again!"))
-        self.winLabel.setText(_translate("MainWindow", "Y\n"
-"O\n"
-"U\n"
-"\n"
-"W\n"
-"I\n"
-"N\n"
-"!"))
+        self.winLabel.setText(_translate("MainWindow", "YOU WIN!"))
 
 
 if __name__ == "__main__":

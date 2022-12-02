@@ -57,6 +57,7 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.winLabel.setVisible(False)
         self.guessLabel.setVisible(False)
         self.restartButton.setVisible(False)
+        self.buttonFrame.setVisible(True)
 
     def boxSelect(self, select: int) -> None:
         '''
@@ -71,9 +72,10 @@ class Controller(QMainWindow, Ui_MainWindow):
         if select == compBox:
             self.hotLabel.setVisible(False)
             self.coldLabel.setVisible(False)
+            self.buttonFrame.setVisible(False)
+            self.guessLabel.setVisible(False)
             self.restartButton.setVisible(True)
             self.winLabel.setVisible(True)
-            self.guessLabel.setVisible(False)
         elif compBox % 5 == 1:
             if compBox - 5 <= select <= compBox - 4 or select == compBox + 1 or compBox + 5 <= select <= compBox + 6:
                 self.hotLabel.setVisible(True)

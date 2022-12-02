@@ -755,10 +755,10 @@
    <widget class="QLabel" name="winLabel">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>140</y>
-      <width>75</width>
-      <height>255</height>
+      <x>40</x>
+      <y>205</y>
+      <width>420</width>
+      <height>100</height>
      </rect>
     </property>
     <property name="palette">
@@ -827,21 +827,14 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>18</pointsize>
+      <pointsize>30</pointsize>
      </font>
     </property>
     <property name="frameShape">
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string>Y
-O
-U
-
-W
-I
-N
-!</string>
+     <string>YOU WIN!</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
