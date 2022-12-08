@@ -15,7 +15,7 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.setFixedSize(500, 500)
         global compBox, guess
         compBox = 0
-        guess = 0
+        guess = 5
         self.randomRestart()
         self.Button1.clicked.connect(lambda: self.boxSelect(1))
         self.Button2.clicked.connect(lambda: self.boxSelect(2))
@@ -51,11 +51,13 @@ class Controller(QMainWindow, Ui_MainWindow):
         '''
         globalList = globals()
         globalList['compBox'] = random.randint(1, 25)
-        globalList['guess'] = 0
+        globalList['guess'] = 5
         self.hotLabel.setVisible(False)
         self.coldLabel.setVisible(False)
         self.winLabel.setVisible(False)
-        self.guessLabel.setVisible(False)
+        self.loseLabel.setVisible(False)
+        self.guessLabel.setText(f'Guess: {guess}')
+        self.guessLabel.setVisible(True)
         self.restartButton.setVisible(False)
         self.buttonFrame.setVisible(True)
 
@@ -66,9 +68,10 @@ class Controller(QMainWindow, Ui_MainWindow):
         :return: Does not return anything
         '''
         globalList = globals()
-        globalList['guess'] += 1
-        self.guessLabel.setText(str(guess))
+        globalList['guess'] -= 1
+        self.guessLabel.setText(f'Guess: {guess}')
         self.guessLabel.setVisible(True)
+        #Checks win condition
         if select == compBox:
             self.hotLabel.setVisible(False)
             self.coldLabel.setVisible(False)
@@ -76,6 +79,17 @@ class Controller(QMainWindow, Ui_MainWindow):
             self.guessLabel.setVisible(False)
             self.restartButton.setVisible(True)
             self.winLabel.setVisible(True)
+            self.loseLabel.setVisible(False)
+        #Checks lose condition
+        elif guess == 0:
+            self.hotLabel.setVisible(False)
+            self.coldLabel.setVisible(False)
+            self.buttonFrame.setVisible(False)
+            self.guessLabel.setVisible(False)
+            self.restartButton.setVisible(True)
+            self.winLabel.setVisible(False)
+            self.loseLabel.setVisible(True)
+        #Tests left edge case
         elif compBox % 5 == 1:
             if compBox - 5 <= select <= compBox - 4 or select == compBox + 1 or compBox + 5 <= select <= compBox + 6:
                 self.hotLabel.setVisible(True)
@@ -83,6 +97,7 @@ class Controller(QMainWindow, Ui_MainWindow):
             else:
                 self.hotLabel.setVisible(False)
                 self.coldLabel.setVisible(True)
+        #Tests right edge case
         elif compBox % 5 == 0:
             if compBox - 6 <= select <= compBox - 5 or select == compBox - 1 or compBox + 4 <= select <= compBox + 5:
                 self.hotLabel.setVisible(True)
@@ -90,6 +105,7 @@ class Controller(QMainWindow, Ui_MainWindow):
             else:
                 self.hotLabel.setVisible(False)
                 self.coldLabel.setVisible(True)
+        #Tests all other cases
         else:
             if compBox - 6 <= select <= compBox - 4 or compBox - 1 <= select <= compBox + 1 or compBox + 4 <= select <= compBox + 6:
                 self.hotLabel.setVisible(True)
